@@ -1,0 +1,22 @@
+@import url('https://fonts.googleapis.com/css?family=Quicksand:300,400,500,700');
+
+html, option, select{
+    font-family: 'Quicksand', sans-serif;
+}
+
+$spacer: 5px;
+
+$black: #000000;
+$white: #ffffff;
+$primary: #808D8E;
+$warning: #ffb24f;
+$danger: #ff704f;
+$success: #4ad872;
+$inactive : #d7d7d7;
+
+$txt-sm: 12pt;
+$txt-md: 16pt;
+$txt-lg: 24pt;
+$txt-xl: 36pt;
+$txt-xxl: 72pt;
+$txt-xxxl: 100pt;

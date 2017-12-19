@@ -1,0 +1,102 @@
+@import "base-variables";
+
+.p-a-sm{ padding: $spacer; }
+.p-t-sm{ padding-top: $spacer; }
+.p-b-sm{ padding-bottom: $spacer; }
+.p-l-sm{ padding-left: $spacer; }
+.p-r-sm{ padding-right: $spacer; }
+
+.p-a-md{ padding: $spacer * 2; }
+.p-t-md{ padding-top: $spacer * 2; }
+.p-b-md{ padding-bottom: $spacer * 2; }
+.p-l-md{ padding-left: $spacer * 2; }
+.p-r-md{ padding-right: $spacer * 2; }
+
+.p-a-lg{ padding: $spacer * 5; }
+.p-t-lg{ padding-top: $spacer * 5; }
+.p-b-lg{ padding-bottom: $spacer * 5; }
+.p-l-lg{ padding-left: $spacer * 5; }
+.p-r-lg{ padding-right: $spacer * 5; }
+
+.m-a{ margin: auto; }
+
+.m-a-sm{ margin: $spacer; }
+.m-t-sm{ margin-top: $spacer; }
+.m-b-sm{ margin-bottom: $spacer; }
+.m-l-sm{ margin-left: $spacer; }
+.m-r-sm{ margin-right: $spacer; }
+
+.m-a-md{ margin: $spacer * 2; }
+.m-t-md{ margin-top: $spacer * 2; }
+.m-b-md{ margin-bottom: $spacer * 2; }
+.m-l-md{ margin-left: $spacer * 2; }
+.m-r-md{ margin-right: $spacer * 2; }
+
+.m-a-lg{ margin: $spacer * 5; }
+.m-t-lg{ margin-top: $spacer * 5; }
+.m-b-lg{ margin-bottom: $spacer * 5; }
+.m-l-lg{ margin-left: $spacer * 5; }
+.m-r-lg{ margin-right: $spacer * 5; }
+
+.t-c-primary{ color: $primary }
+.t-c-warning{ color: $warning }
+.t-c-danger{ color: $danger }
+.t-c-success{ color: $success }
+.t-c-inactive{ color: $inactive }
+.t-c-white{ color: $white }
+.t-c-black{ color: $black }
+
+.t-s-sm{ font-size: $txt-sm}
+.t-s-md{ font-size: $txt-md}
+.t-s-lg{ font-size: $txt-lg}
+.t-s-xl{ font-size: $txt-xl}
+.t-s-xxl{ font-size: $txt-xxl}
+.t-s-xxxl{ font-size: $txt-xxxl}
+
+.t-a-c{ text-align: center}
+.t-a-l{ text-align: left}
+.t-a-r{ text-align: right}
+
+.bg-c-primary{ background-color: $primary }
+.bg-c-warning{ background-color: $warning }
+.bg-c-danger{ background-color: $danger }
+.bg-c-success{ background-color: $success }
+.bg-c-inactive{ background-color: $inactive }
+.bg-c-white{ background-color: $white }
+.bg-c-black{ background-color: $black }
+
+.op-0{opacity: 0}
+.op-25{ opacity: 0.25}
+.op-50{ opacity: 0.5}
+.op-75{opacity: 0.75}
+.op-100{opacity: 1}
+
+.w-100 {width: 100%}
+.h-100{height:100%}
+
+.c-p{cursor: pointer}
+.flex-center{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+svg {
+    
+   position: absolute;
+   width: 100%;
+   height: 100%;
+   margin: auto;
+   top: 0; bottom: 0;
+   left: 0;
+   right:0;
+   pointer-events: none;
+ }
+ circle{
+     stroke: $white;
+ }
+ img:focus,  button:focus{
+     outline: 0;
+ }
