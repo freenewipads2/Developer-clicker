@@ -74,6 +74,14 @@
 .w-100 {width: 100%}
 .h-100{height:100%}
 
+.b-c-success{
+    border-color: $success;
+}
+.b-a-sm{
+    border: 1px solid;
+}
+
+
 .c-p{cursor: pointer}
 .flex-center{
     display: flex;
@@ -81,6 +89,13 @@
     justify-content: center;
     align-items: center;
     height: 100%;
+}
+.flex-end{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+    height: 50%;
 }
 
 svg {
@@ -100,3 +115,14 @@ svg {
  img:focus,  button:focus{
      outline: 0;
  }
+
+
+ .e-blink {
+    animation: blink 1.2s infinite linear;
+}
+
+@keyframes blink{
+    0% { opacity: 1;}
+    33% { opacity: 0;}
+    100% { opacity: 1;}
+}

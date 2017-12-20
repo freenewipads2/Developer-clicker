@@ -15,21 +15,7 @@ export class App {
   configureRouter(config, router) {
     config.title = 'Beyond';
     config.map([
-      {route: [''], name: 'start', moduleId: 'views/start', nav: true, title: 'Start'},
-      {
-        route: 'user/:id',
-        name: 'game',
-        moduleId: './views/game',
-        nav: false,
-        title: ""
-    },
-    {
-      route: 'create/',
-      name: 'create',
-      moduleId: './views/create',
-      nav: false,
-      title: "Create new game"
-  },
+      {route: [''], name: 'start', moduleId: 'views/game', nav: true, title: 'Start'},
     ]);
     this.router = router;
     //this.router.refreshNavigation()

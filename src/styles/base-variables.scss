@@ -1,14 +1,14 @@
-@import url('https://fonts.googleapis.com/css?family=Quicksand:300,400,500,700');
+@import url('https://fonts.googleapis.com/css?family=Roboto+Mono:100,100i,300,300i,400,400i,500,500i,700,700i');
 
-html, option, select{
-    font-family: 'Quicksand', sans-serif;
+html, option, select, input{
+    font-family: 'Roboto Mono', monospace;    
 }
 
 $spacer: 5px;
 
 $black: #000000;
 $white: #ffffff;
-$primary: #808D8E;
+$primary: #00b4ff;
 $warning: #ffb24f;
 $danger: #ff704f;
 $success: #4ad872;
