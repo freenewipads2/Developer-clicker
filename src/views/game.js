@@ -15,18 +15,22 @@ export class Start{
         this.replies = [];
     }
 
+    attached(){
+        this.state.addReply("Last login: Wed Dec 20 09:56:45 on ttys002");
+    }
+
     submit(e){
         if(e.key == "Enter"){
             let reply = "-bash " + this.cmdInput + ": Command does not exist";
-            this.state.addReply(this.state.user.name + "-MacBook-Pro:" + this.folder + " " + this.state.user.name + "$ " + this.cmdInput);
+            this.state.addInput(this.state.user.name + "$ " + this.cmdInput);
 
             if(this.cmdInput == "help"){
-                this.state.addReply("Start new: game au run --watch");
-                this.state.addReply("Load game: au run env --username --watch");
-                this.state.addReply("Kill instance: die")
-                this.state.addReply("Buy upgrade: buy x[name] where x are the ammount.");
-                this.state.addReply("Current upgrades are:");
-                this.state.addReply("");
+                this.state.addInput("Start new: game au run --watch");
+                this.state.addInput("Load game: au run env --username --watch");
+                this.state.addInput("Kill instance: die")
+                this.state.addInput("Buy upgrade: buy x[name] where x are the ammount.");
+                this.state.addInput("Current upgrades are:");
+                this.state.addInput("");
             }
             else if(this.cmdInput == "die"){
                 this.state.killGame();

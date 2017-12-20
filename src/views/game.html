@@ -1,13 +1,17 @@
 <template>
-    <div id="body" class="wrapper t-s-md" style="overflow: scroll">
-        <div class="p-a-lg t-c-success ">
-        ${state.user.name}-MacBook-Pro:~ ${state.user.name}$ cd documents/GitHub/click-enter/<br>
-        <div repeat.for="reply of state.replies">
-                ${reply}
+<div class="wrapper t-s-md">
+        <div id="body" class="p-a-lg t-c-success" style="width: 45%;display: inline-block;overflow:scroll; height: 100%" >
+            <div repeat.for="reply of state.replies">
+                    ${reply}
+            </div>
         </div>
-        <div if.bind="state.canInput">
-        ${state.user.name}-MacBook-Pro:click-enter ${state.user.name}$ <input value.bind="cmdInput" keypress.trigger="submit($event)" type="text" value="" class="t-s-md t-c-success" focus.one-way="state.canInput" style="width: 50%;outline: 0;background: transparent; border: 0px"><!-- <span class="bg-c-inactive e-blink" style="width: 5px">&nbsp;</span> -->
+        <div class="p-a-lg t-c-success" style="width: 45%;display: inline-block;overflow:scroll; height: 100%; float:right">
+                <div repeat.for="input of state.inputs">
+                        ${input}
+                </div>
+            <div if.bind="state.canInput">
+                ${state.user.name}$ <input value.bind="cmdInput" keypress.trigger="submit($event)" type="text" value="" class="t-s-md t-c-success" focus.one-way="state.canInput" style="width: 50%;outline: 0;background: transparent; border: 0px"><!-- <span class="bg-c-inactive e-blink" style="width: 5px">&nbsp;</span> -->
+            </div>
         </div>
-    </div>
-    </div>
+</div>
 </template>

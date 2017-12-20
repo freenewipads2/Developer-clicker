@@ -9,6 +9,7 @@ export class GameState{
         this.isRunning = false;
         this.canInput = true;
         this.replies = [];
+        this.inputs = [];
 
     }
     startGame(){
@@ -26,5 +27,8 @@ export class GameState{
     addReply(reply){
         this.replies.push(reply);
         document.getElementById("body").scrollTo(0,document.getElementById("body").scrollHeight);
+    }
+    addInput(input){
+        this.inputs.push(input);
     }
 }
