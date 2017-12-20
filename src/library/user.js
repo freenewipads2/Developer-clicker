@@ -22,14 +22,23 @@ export class User{
         this.name = name;
         this.units = units;
     }
+    updateUnits(){
+        let totalModifier = this.upgrades.getTotalModifier() + 1;
+        this.units += 1 * totalModifier;
+    }
     setUnits(i){
         this.units += i;
     }
     buyUpgrade(name){
-        if(this.state.user.units > this.upgrades.currentUpgrades[name].cost){
-            this.state.user.setUnits(-his.currentUpgrades[name].cost);
-            this.upgrades.currentUpgrades[name].cost;
-            this.upgrades.currentUpgrades[name].level++;
+        if(this.upgrades.currentUpgrades[name]){
+            if(this.units > this.upgrades.currentUpgrades[name].cost){
+                this.setUnits(-this.upgrades.currentUpgrades[name].cost);
+                this.upgrades.currentUpgrades[name].cost;
+                this.upgrades.currentUpgrades[name].level++;
+            }
+            return true;
+        } else {
+            return false;
         }
     }
 

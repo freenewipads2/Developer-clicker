@@ -42,6 +42,13 @@ export class Game{
                 this.state.killGame();
             }
             else if(this.cmdInput.includes("buy")){
+                let upgrade = this.cmdInput.split(" ")[1];
+                if(this.state.user.buyUpgrade(upgrade)){
+                    this.state.addInput(upgrade + " modified");
+
+                } else {
+                    this.state.addInput(upgrade + " does not exist");
+                }
 
             }
 

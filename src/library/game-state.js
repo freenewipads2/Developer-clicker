@@ -16,7 +16,7 @@ export class GameState{
         this.canInput = true;
         this.isRunning = true;
         this.gameLoop = setInterval(x =>{
-            this.user.setUnits(1);
+            this.user.updateUnits();
             this.addReply(this.user.name + " units incresed by " + this.user.units);
         },1000);
 
@@ -28,9 +28,10 @@ export class GameState{
 
     addReply(reply){
         this.replies.push(reply);
-        document.getElementById("body").scrollTo(0,document.getElementById("body").scrollHeight);
+        document.getElementById("output").scrollTo(0,document.getElementById("output").scrollHeight);
     }
     addInput(input){
         this.inputs.push(input);
+        document.getElementById("input").scrollTo(0,document.getElementById("input").scrollHeight);
     }
 }

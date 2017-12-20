@@ -1,11 +1,11 @@
 <template>
-<div class="wrapper t-s-md">
-        <div id="body" class="p-a-lg t-c-success" style="width: 45%;display: inline-block;overflow:hidden; height: 100%" >
+<div class="wrapper t-s-md p-a-md">
+        <div id="output" class="t-c-success" style="width: 45%;display: inline-block;overflow:hidden; height: 100%" >
             <div repeat.for="reply of state.replies">
                     ${reply}
             </div>
         </div>
-        <div class="p-a-lg t-c-success" style="width: 45%;display: inline-block;overflow:scroll; height: 100%; float:right">
+        <div id="input" class="t-c-success" style="width: 45%;display: inline-block;overflow:hidden; height: 100%; float:right">
                 <div repeat.for="input of state.inputs" innerhtml.bind="input">
                 </div>
             <div if.bind="state.canInput">
