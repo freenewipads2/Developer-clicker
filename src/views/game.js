@@ -30,13 +30,15 @@ export class Game{
                 this.state.addInput("Start new: game au run --watch");
                 this.state.addInput("Load game: au run env --username --watch");
                 this.state.addInput("Kill instance: die")
+                this.state.addInput("View all upgrades upgrades -v all")
                 this.state.addInput("Buy upgrade: buy x[name] where x are the ammount.");
-                this.state.addInput("Current upgrades are:");
+                this.state.addInput("");
+            }
+            else if(this.cmdInput == "upgrades -v all"){
                 this.state.addInput("NAME | LEVEL | COST | MODIFIER");
                 for(let upgrade in this.state.user.upgrades.currentUpgrades){
                     this.state.addInput(this.state.user.upgrades.currentUpgrades[upgrade].name + "&nbsp;&nbsp;&nbsp;&nbsp;" + this.state.user.upgrades.currentUpgrades[upgrade].level + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + this.state.user.upgrades.currentUpgrades[upgrade].cost + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + this.state.user.upgrades.currentUpgrades[upgrade].modifier);
                 }
-                this.state.addInput("");
             }
             else if(this.cmdInput == "die"){
                 this.state.killGame();
@@ -76,6 +78,8 @@ export class Game{
             else {
                 this.state.addInput(reply);
             }
+
+            
             this.lastCmdInput = this.cmdInput;
             this.cmdInput = "";
         } else {

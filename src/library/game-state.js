@@ -28,10 +28,14 @@ export class GameState{
 
     addReply(reply){
         this.replies.push(reply);
-        document.getElementById("output").scrollTo(0,document.getElementById("output").scrollHeight);
+        setTimeout(x =>{
+            document.getElementById("output").scrollTo(0,document.getElementById("output").scrollHeight);
+        },10);
     }
     addInput(input){
         this.inputs.push(input);
-        document.getElementById("input").scrollTo(0,document.getElementById("input").scrollHeight);
+        setTimeout(x =>{
+            document.getElementById("input").scrollTo(0,document.getElementById("input").scrollHeight);
+        },10);
     }
 }
