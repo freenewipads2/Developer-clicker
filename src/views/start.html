@@ -1,0 +1,11 @@
+<template>
+    <div class="wrapper">
+        <div class="p-a-lg t-c-success">
+        ${name}-MacBook-Pro:~ ${name}$ cd documents/GitHub/click-enter/<br>
+        <div repeat.for="reply of replies">
+                ${name}-MacBook-Pro:${folder} ${name}$ ${reply}
+        </div>
+        ${name}-MacBook-Pro:click-enter ${name}$ <input value.bind="cmdInput" keypress.trigger="submit($event)" type="text" value="" class="t-c-success t-s-sm" autofocus style="outline: 0;background: transparent; border: 0px"><!-- <span class="bg-c-inactive e-blink" style="width: 5px">&nbsp;</span> -->
+        </div>
+    </div>
+</template>

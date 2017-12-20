@@ -6,3 +6,4 @@ export class Game{
     activate(args){
         this.id = args.id;
     }
+}

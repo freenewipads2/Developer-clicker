@@ -96,7 +96,12 @@
           "aurelia-bootstrapper",
           "aurelia-dependency-injection",
           "aurelia-event-aggregator",
-          "aurelia-framework",
+          {
+            "name": "aurelia-framework",
+            "main": "aurelia-framework",
+            "path": "../node_modules/aurelia-framework/dist/amd",
+            "resources": []
+          },
           "aurelia-history",
           "aurelia-history-browser",
           "aurelia-loader",
@@ -109,7 +114,12 @@
           "aurelia-path",
           "aurelia-polyfills",
           "aurelia-route-recognizer",
-          "aurelia-router",
+          {
+            "name": "aurelia-router",
+            "main": "aurelia-router",
+            "path": "../node_modules/aurelia-router/dist/amd",
+            "resources": []
+          },
           "aurelia-task-queue",
           "aurelia-templating",
           "aurelia-templating-binding",
@@ -129,6 +139,18 @@
             "path": "../node_modules/aurelia-testing/dist/amd",
             "main": "aurelia-testing",
             "env": "dev"
+          },
+          {
+            "name": "aurelia-auth",
+            "main": "aurelia-auth",
+            "path": "../node_modules/aurelia-auth/dist/amd",
+            "resources": []
+          },
+          {
+            "name": "aurelia-fetch-client",
+            "main": "aurelia-fetch-client",
+            "path": "../node_modules/aurelia-fetch-client/dist/amd",
+            "resources": []
           }
         ]
       }

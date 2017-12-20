@@ -24,6 +24,13 @@ export class App {
         title: ""
     },
     {
+      route: 'load/',
+      name: 'Load',
+      moduleId: './views/loadView',
+      nav: false,
+      title: "Loading program"
+  },
+    {
       route: 'create/',
       name: 'create',
       moduleId: './views/create',
