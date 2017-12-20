@@ -30,9 +30,16 @@ export class Game{
                 this.state.addInput("Start new game: au run --watch");
                 this.state.addInput("Load saved game: au run env --username --watch");
                 this.state.addInput("Kill instance: die");
+                this.state.addInput("Save instance: save -n [name]");
                 this.state.addInput("Clear inputs: clean");
                 this.state.addInput("View all upgrades: upgrade -v all")
                 this.state.addInput("Buy upgrade: upgrade -up [upgrade] -a [ammount]");
+            }
+            else if(this.cmdInput == "die"){
+                this.state.killGame();
+            }
+            else if(this.cmdInput.includes("save -n")){
+                this.state.addInput("Initializing save...");
             }
             else if(this.cmdInput == "clean"){
                 this.state.inputs = [];
@@ -42,9 +49,6 @@ export class Game{
                 for(let upgrade in this.state.user.upgrades.currentUpgrades){
                     this.state.addInput(this.state.user.upgrades.currentUpgrades[upgrade].name + "&nbsp;&nbsp;&nbsp;&nbsp;" + this.state.user.upgrades.currentUpgrades[upgrade].level + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + this.state.user.upgrades.currentUpgrades[upgrade].cost + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + this.state.user.upgrades.currentUpgrades[upgrade].modifier);
                 }
-            }
-            else if(this.cmdInput == "die"){
-                this.state.killGame();
             }
             else if(this.cmdInput.includes("upgrade -up")){
                 let ammount = this.cmdInput.split("-a ")[1];
