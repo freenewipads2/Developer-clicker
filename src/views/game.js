@@ -2,7 +2,7 @@ import { inject } from 'aurelia-framework';
 import {LocalStorageHelper } from 'helpers/local-storage-helper';
 import {GameState} from 'library/game-state';
 @inject(LocalStorageHelper,GameState)
-export class Start{
+export class Game{
     constructor(localStorageHelper, GameState){
         this.localStorageHelper = localStorageHelper;
         this.state = GameState;
@@ -16,7 +16,9 @@ export class Start{
     }
 
     attached(){
-        this.state.addReply("Last login: Wed Dec 20 09:56:45 on ttys002");
+        this.state.addReply("Last login: 1 Jan 1970 00:00:00");
+
+
     }
 
     submit(e){
@@ -30,13 +32,20 @@ export class Start{
                 this.state.addInput("Kill instance: die")
                 this.state.addInput("Buy upgrade: buy x[name] where x are the ammount.");
                 this.state.addInput("Current upgrades are:");
+                this.state.addInput("NAME | LEVEL | COST | MODIFIER");
+                for(let upgrade in this.state.user.upgrades.currentUpgrades){
+                    this.state.addInput(this.state.user.upgrades.currentUpgrades[upgrade].name + "&nbsp;&nbsp;&nbsp;&nbsp;" + this.state.user.upgrades.currentUpgrades[upgrade].level + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + this.state.user.upgrades.currentUpgrades[upgrade].cost + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + this.state.user.upgrades.currentUpgrades[upgrade].modifier);
+                }
                 this.state.addInput("");
             }
             else if(this.cmdInput == "die"){
                 this.state.killGame();
             }
+            else if(this.cmdInput.includes("buy")){
 
-            else if(this.cmdInput.includes("au run") && this.cmdInput.includes("--watch")){
+            }
+
+            else if(this.cmdInput.includes("au run") && this.cmdInput.includes("--watch") && !this.state.isRunning){
                 this.state.canInput = false;
                 if(this.cmdInput.includes("env")){
                     this.user = this.cmdInput.split("--")[1].substr(3,this.cmdInput.split("--")[1].length);
@@ -58,7 +67,7 @@ export class Start{
             }
             
             else {
-                this.state.addReply(reply);
+                this.state.addInput(reply);
             }
             this.lastCmdInput = this.cmdInput;
             this.cmdInput = "";

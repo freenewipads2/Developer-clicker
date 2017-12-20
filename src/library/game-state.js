@@ -14,6 +14,7 @@ export class GameState{
     }
     startGame(){
         this.canInput = true;
+        this.isRunning = true;
         this.gameLoop = setInterval(x =>{
             this.user.setUnits(1);
             this.addReply(this.user.name + " units incresed by " + this.user.units);
@@ -21,6 +22,7 @@ export class GameState{
 
     }
     killGame(){
+        this.isRunning = false;
         clearInterval(this.gameLoop);
     }
 

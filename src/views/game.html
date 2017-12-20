@@ -1,13 +1,12 @@
 <template>
 <div class="wrapper t-s-md">
-        <div id="body" class="p-a-lg t-c-success" style="width: 45%;display: inline-block;overflow:scroll; height: 100%" >
+        <div id="body" class="p-a-lg t-c-success" style="width: 45%;display: inline-block;overflow:hidden; height: 100%" >
             <div repeat.for="reply of state.replies">
                     ${reply}
             </div>
         </div>
         <div class="p-a-lg t-c-success" style="width: 45%;display: inline-block;overflow:scroll; height: 100%; float:right">
-                <div repeat.for="input of state.inputs">
-                        ${input}
+                <div repeat.for="input of state.inputs" innerhtml.bind="input">
                 </div>
             <div if.bind="state.canInput">
                 ${state.user.name}$ <input value.bind="cmdInput" keypress.trigger="submit($event)" type="text" value="" class="t-s-md t-c-success" focus.one-way="state.canInput" style="width: 50%;outline: 0;background: transparent; border: 0px"><!-- <span class="bg-c-inactive e-blink" style="width: 5px">&nbsp;</span> -->
