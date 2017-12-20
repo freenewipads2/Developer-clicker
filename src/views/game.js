@@ -27,14 +27,17 @@ export class Game{
             this.state.addInput(this.state.user.name + "$ " + this.cmdInput);
 
             if(this.cmdInput == "help"){
-                this.state.addInput("Start new: game au run --watch");
-                this.state.addInput("Load game: au run env --username --watch");
+                this.state.addInput("Start new game: au run --watch");
+                this.state.addInput("Load saved game: au run env --username --watch");
                 this.state.addInput("Kill instance: die")
-                this.state.addInput("View all upgrades upgrades -v all")
-                this.state.addInput("Buy upgrade: buy x[name] where x are the ammount.");
+                this.state.addInput("View all upgrades: upgrade -v all")
+                this.state.addInput("Buy upgrade: upgrade -up [upgrade] -a [ammount]");
                 this.state.addInput("");
             }
-            else if(this.cmdInput == "upgrades -v all"){
+            else if(this.cmdInput == "clean"){
+                this.state.inputs = [];
+            }
+            else if(this.cmdInput == "upgrade -v all"){
                 this.state.addInput("NAME | LEVEL | COST | MODIFIER");
                 for(let upgrade in this.state.user.upgrades.currentUpgrades){
                     this.state.addInput(this.state.user.upgrades.currentUpgrades[upgrade].name + "&nbsp;&nbsp;&nbsp;&nbsp;" + this.state.user.upgrades.currentUpgrades[upgrade].level + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + this.state.user.upgrades.currentUpgrades[upgrade].cost + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + this.state.user.upgrades.currentUpgrades[upgrade].modifier);
@@ -43,11 +46,21 @@ export class Game{
             else if(this.cmdInput == "die"){
                 this.state.killGame();
             }
-            else if(this.cmdInput.includes("buy")){
-                let upgrade = this.cmdInput.split(" ")[1];
-                if(this.state.user.buyUpgrade(upgrade)){
-                    this.state.addInput(upgrade + " modified");
+            else if(this.cmdInput.includes("upgrade -up")){
+                let ammount = this.cmdInput.split("-a ")[1];
+                let upgrade = this.cmdInput.split("-up ")[1];
+                upgrade = upgrade.split(" ")[0];
+                if(ammount < 1){
+                    this.state.addInput("No ammount specified, set to 1");
+                    ammount = 1;
+                }
+                if(this.state.user.upgrades.currentUpgrades[upgrade]){
+                    if(this.state.user.buyUpgrade(upgrade, ammount)){
+                        this.state.addInput(upgrade + " modified");
 
+                    } else {
+                        this.state.addInput("You do not have enought units.");
+                    }
                 } else {
                     this.state.addInput(upgrade + " does not exist");
                 }

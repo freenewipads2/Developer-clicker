@@ -29,17 +29,17 @@ export class User{
     setUnits(i){
         this.units += i;
     }
-    buyUpgrade(name){
-        if(this.upgrades.currentUpgrades[name]){
-            if(this.units > this.upgrades.currentUpgrades[name].cost){
-                this.setUnits(-this.upgrades.currentUpgrades[name].cost);
+    buyUpgrade(name, ammount){
+            if(this.units > this.upgrades.currentUpgrades[name].cost * ammount){
+                this.setUnits(-this.upgrades.currentUpgrades[name].cost * ammount);
                 this.upgrades.currentUpgrades[name].cost;
-                this.upgrades.currentUpgrades[name].level++;
+                this.upgrades.currentUpgrades[name].level += ammount;
+                return true;
             }
-            return true;
-        } else {
-            return false;
-        }
+            else {
+                return false;
+            }
+        
     }
 
 }
