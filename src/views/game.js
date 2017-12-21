@@ -10,8 +10,8 @@ export class Game{
         this.folder = "click-enter";
 
         this.cmdInput = "";
-        this.lastCmdInput = [];
-        this.lastCmdInputIndex = 0;
+        this.history = [];
+        this.historyIndex = 0;
 
         this.replies = [];
     }
@@ -23,19 +23,23 @@ export class Game{
 
         let that = this;
         document.onkeydown = function(e) {
-          if(that.lastCmdInput.length > 0){
+          if(that.history.length > 0){
             switch (e.keyCode) {
                 case 38:
-                    if(that.lastCmdInputIndex < that.lastCmdInput.length){
-                      that.lastCmdInputIndex++;
+                    if(that.historyIndex < that.history.length){
+                      that.historyIndex++;
                     }
-                    that.cmdInput = that.lastCmdInput[that.lastCmdInput.length - that.lastCmdInputIndex];
+                    that.cmdInput = that.history[that.history.length - that.historyIndex];
                     break;
                     case 40:
-                        if(that.lastCmdInputIndex > 1){
-                          that.lastCmdInputIndex--;
+                        if(that.historyIndex > 1){
+                          that.historyIndex--;
+                          that.cmdInput = that.history[that.history.length - that.historyIndex];
+                        } else {
+                          that.historyIndex = 0;
+                          that.cmdInput = "";
                         }
-                        that.cmdInput = that.lastCmdInput[that.lastCmdInput.length - that.lastCmdInputIndex];
+
                         break;
             }
           }
@@ -141,8 +145,8 @@ export class Game{
                 this.state.addInput(reply);
             }
 
-            this.lastCmdInputIndex = 0;
-            this.lastCmdInput.push(this.cmdInput);
+            this.historyIndex = 0;
+            this.history.push(this.cmdInput);
             this.cmdInput = "";
         } else {
             this.cmdInput += e.key;
