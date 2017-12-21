@@ -22,6 +22,11 @@ export class User{
         this.name = name;
         this.units = units;
     }
+    parse(obj){
+      this.name = obj.name;
+      this.units = obj.units;
+      this.upgrades.currentUpgrades = obj.currentUpgrades;
+    }
     updateUnits(){
         let totalModifier = this.upgrades.getTotalModifier() + 1;
         this.units += 1 * totalModifier;
@@ -39,7 +44,7 @@ export class User{
             else {
                 return false;
             }
-        
+
     }
 
 }

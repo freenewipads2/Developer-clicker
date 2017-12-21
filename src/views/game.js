@@ -23,7 +23,7 @@ export class Game{
 
     submit(e){
         if(e.key == "Enter"){
-            let reply = "-bash " + this.cmdInput + ": Command does not exist";
+            let reply = "-bash " + this.cmdInput + ": Command could not be executed";
             this.state.addInput(this.state.user.name + "$ " + this.cmdInput);
 
             if(this.cmdInput == "help"){
@@ -39,7 +39,23 @@ export class Game{
                 this.state.killGame();
             }
             else if(this.cmdInput.includes("save -n")){
+                this.state.canInput = false;
+                let name = this.cmdInput.split("-n ")[1];
                 this.state.addInput("Initializing save...");
+                this.state.user.name = name;
+                this.state.user.currentUpgrades = this.state.user.upgrades.currentUpgrades;
+                this.localStorageHelper.setStorage(name,JSON.stringify(this.state.user));
+                setTimeout (x =>{
+                  let userData = this.localStorageHelper.getStorage(this.state.user.name);
+                  if(userData){
+                    this.state.addInput("Save was successful");
+                    this.state.addInput(JSON.stringify(this.state.user));
+                  } else {
+                    this.state.addInput("Error while saving.")
+                  }
+                  this.state.canInput = true;
+                },500);
+
             }
             else if(this.cmdInput == "clean"){
                 this.state.inputs = [];
@@ -74,29 +90,34 @@ export class Game{
             else if(this.cmdInput.includes("au run") && this.cmdInput.includes("--watch") && !this.state.isRunning){
                 this.state.canInput = false;
                 if(this.cmdInput.includes("env")){
-                    this.user = this.cmdInput.split("--")[1].substr(3,this.cmdInput.split("--")[1].length);
-                    this.state.addReply("Loading "+ this.user);
-                    if(this.localStorageHelper.getStorage(this.user + "_save")){
+                    //let user = this.cmdInput.split("--")[1].substr(3,this.cmdInput.split("--")[1].length - 1);
+                    let user = this.cmdInput.split(" ")[3];
+                    console.log(user);
+                    this.state.addReply("Loading "+ user);
+                    let userData = this.localStorageHelper.getStorage(user);
+                    console.log(userData);
+                    if(userData){
+                        this.state.user.parse(JSON.parse(userData));
                         this.build();
                     } else {
                         setTimeout(x =>{
-                        this.state.addReply("User "+ this.user + " does not exist.");
+                        this.state.addReply("Save file "+ user + " does not exist.");
                         this.state.canInput = true;
                         },500);
                     }
                 }
                 else {
                     this.state.addReply("Creating new user");
-                    this.state.user.init(this.defaultName, 0,[]);                    
+                    this.state.user.init(this.defaultName, 0,[]);
                     this.build();
                 }
             }
-            
+
             else {
                 this.state.addInput(reply);
             }
 
-            
+
             this.lastCmdInput = this.cmdInput;
             this.cmdInput = "";
         } else {
