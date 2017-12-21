@@ -5,7 +5,7 @@ export class Upgrades{
     }
 
     addUpgrade(upgrade){
-        this.currentUpgrades[upgrade.name] = upgrade;
+        this.currentUpgrades.push(upgrade);
     }
     getTotalModifier(){
         let total = 0;

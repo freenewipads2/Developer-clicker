@@ -18,7 +18,9 @@ export class Game{
 
     attached(){
         setInterval(x =>{
-                      this.textInput.focus();
+            if(this.textInput){
+            this.textInput.focus();
+          }
         },1000);
 
         let that = this;
@@ -71,13 +73,18 @@ export class Game{
                 this.state.canInput = false;
                 let name = this.cmdInput.split("-n ")[1];
                 this.state.addInput("Initializing save...");
-                this.state.user.name = name;
-                this.localStorageHelper.setStorage(name,JSON.stringify(this.state.user.upgrades.currentUpgrades));
+                this.state.user.currentUpgrades = this.state.user.upgrades.currentUpgrades;
+                console.log(this.state.user);
+
+                let saveData = JSON.parse(JSON.stringify(this.state.user));
+                saveData.name = name;
+                saveData.upgrades = null;
+                this.localStorageHelper.setStorage(name,JSON.stringify(saveData));
                 setTimeout (x =>{
-                  let userData = this.localStorageHelper.getStorage(this.state.user.name);
-                  console.log(JSON.parse(userData));
+                  let userData = this.localStorageHelper.getStorage(name);
                   if(userData){
                     this.state.addInput("Save was successful");
+                    this.state.user.parse(JSON.parse(userData));
                   } else {
                     this.state.addInput("Error while saving.")
                   }
@@ -118,12 +125,9 @@ export class Game{
             else if(this.cmdInput.includes("au run") && this.cmdInput.includes("--watch") && !this.state.isRunning){
                 this.state.canInput = false;
                 if(this.cmdInput.includes("env")){
-                    //let user = this.cmdInput.split("--")[1].substr(3,this.cmdInput.split("--")[1].length - 1);
                     let user = this.cmdInput.split(" ")[3];
-                    console.log(user);
                     this.state.addReply("Loading "+ user);
                     let userData = this.localStorageHelper.getStorage(user);
-                    console.log(userData);
                     if(userData){
                         this.state.user.parse(JSON.parse(userData));
                         this.build();
