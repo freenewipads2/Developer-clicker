@@ -17,7 +17,7 @@ export class Game{
     }
 
     attached(){
-        (x =>{
+        setInterval(x =>{
                       this.textInput.focus();
         },1000);
 
