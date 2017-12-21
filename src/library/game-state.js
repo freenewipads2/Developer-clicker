@@ -17,7 +17,7 @@ export class GameState{
         this.isRunning = true;
         this.gameLoop = setInterval(x =>{
             this.user.updateUnits();
-            this.addReply(this.user.name + " units incresed by " + this.user.units);
+            this.addReply("Units: " + this.user.units + " | Modifier: " + this.user.upgrades.getTotalModifier());
         },1000);
 
     }

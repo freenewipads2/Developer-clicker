@@ -14,5 +14,12 @@ export class Upgrades{
         }
         return total;
     }
+    findUpgrade(name){
+      for(let upgrade in this.currentUpgrades){
+          if(this.currentUpgrades[upgrade].name == name){
+            return this.currentUpgrades[upgrade];
+          }
+      }
+    }
 
 }

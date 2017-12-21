@@ -109,10 +109,9 @@ export class Game{
                     this.state.addInput("No ammount specified, set to 1");
                     ammount = 1;
                 }
-                if(this.state.user.upgrades.currentUpgrades[upgrade]){
+                if(this.state.user.upgrades.findUpgrade(upgrade)){
                     if(this.state.user.buyUpgrade(upgrade, ammount)){
                         this.state.addInput(upgrade + " modified");
-
                     } else {
                         this.state.addInput("You do not have enought units.");
                     }
@@ -165,7 +164,7 @@ export class Game{
         }
 
         setTimeout(x =>{
-            this.state.addReply("Refreshing the browser");
+            this.state.addReply("Game initialized...");
             this.state.startGame();
         },5000);
     }

@@ -41,10 +41,10 @@ export class User{
                 index = i;
               }
             }
-            if(this.units > this.upgrades.currentUpgrades[name].cost * ammount){
-                this.setUnits(-this.upgrades.currentUpgrades[name].cost * ammount);
-                this.upgrades.currentUpgrades[name].cost;
-                this.upgrades.currentUpgrades[name].level += ammount;
+            if(this.units > this.upgrades.currentUpgrades[index].cost * ammount){
+                this.setUnits(-this.upgrades.currentUpgrades[index].cost * ammount);
+                this.upgrades.currentUpgrades[index].cost;
+                this.upgrades.currentUpgrades[index].level += ammount;
                 return true;
             }
             else {
