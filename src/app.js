@@ -13,9 +13,10 @@ export class App {
 
 
   configureRouter(config, router) {
-    config.title = 'Beyond';
+    config.title = 'Developer-clicker';
     config.map([
-      {route: [''], name: 'start', moduleId: 'views/game', nav: true, title: 'Start'},
+      {route: [''], name: 'start', moduleId: 'views/start', nav: true, title: 'Start'},
+      {route: ['/play'], name: 'start', moduleId: 'views/game', nav: true, title: 'Start'},
     ]);
     this.router = router;
     //this.router.refreshNavigation()

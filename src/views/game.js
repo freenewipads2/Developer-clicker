@@ -10,12 +10,37 @@ export class Game{
         this.folder = "click-enter";
 
         this.cmdInput = "";
-        this.lastCmdInput = "";
+        this.lastCmdInput = [];
+        this.lastCmdInputIndex = 0;
 
         this.replies = [];
     }
 
     attached(){
+        (x =>{
+                      this.textInput.focus();
+        },1000);
+
+        let that = this;
+        document.onkeydown = function(e) {
+          if(that.lastCmdInput.length > 0){
+            switch (e.keyCode) {
+                case 38:
+                    if(that.lastCmdInputIndex < that.lastCmdInput.length){
+                      that.lastCmdInputIndex++;
+                    }
+                    that.cmdInput = that.lastCmdInput[that.lastCmdInput.length - that.lastCmdInputIndex];
+                    break;
+                    case 40:
+                        if(that.lastCmdInputIndex > 1){
+                          that.lastCmdInputIndex--;
+                        }
+                        that.cmdInput = that.lastCmdInput[that.lastCmdInput.length - that.lastCmdInputIndex];
+                        break;
+            }
+          }
+        };
+
         this.state.addReply("Last login: 1 Jan 1970 00:00:00");
 
 
@@ -116,8 +141,8 @@ export class Game{
                 this.state.addInput(reply);
             }
 
-
-            this.lastCmdInput = this.cmdInput;
+            this.lastCmdInputIndex = 0;
+            this.lastCmdInput.push(this.cmdInput);
             this.cmdInput = "";
         } else {
             this.cmdInput += e.key;
