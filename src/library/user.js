@@ -9,7 +9,7 @@ export class User{
 
         for(let i = 0; i != 20; i++){
             this.upgrades.addUpgrade({
-                name: Math.random().toString(36).substr(2, 5),
+                name: Math.floor((Math.random() * (1000 * 9000)) + 9000),//Math.random().toString(36).substr(2, 5),
                 cost: Math.floor((Math.random() * (10 * i)) + 1),
                 level : 0,
                 modifier: Math.floor((Math.random() * (10 * i)) + 1),

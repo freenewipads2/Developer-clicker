@@ -43,13 +43,12 @@ export class Game{
                 let name = this.cmdInput.split("-n ")[1];
                 this.state.addInput("Initializing save...");
                 this.state.user.name = name;
-                this.state.user.currentUpgrades = this.state.user.upgrades.currentUpgrades;
-                this.localStorageHelper.setStorage(name,JSON.stringify(this.state.user));
+                this.localStorageHelper.setStorage(name,JSON.stringify(this.state.user.upgrades.currentUpgrades));
                 setTimeout (x =>{
                   let userData = this.localStorageHelper.getStorage(this.state.user.name);
+                  console.log(JSON.parse(userData));
                   if(userData){
                     this.state.addInput("Save was successful");
-                    this.state.addInput(JSON.stringify(this.state.user));
                   } else {
                     this.state.addInput("Error while saving.")
                   }
