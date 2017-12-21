@@ -57,7 +57,7 @@ export class Game{
 
             if(this.cmdInput == "help"){
                 this.state.addInput("Start new game: au run --watch");
-                this.state.addInput("Load saved game: au run env --username --watch");
+                this.state.addInput("Load saved game: au run --env [save] --watch");
                 this.state.addInput("Kill instance: die");
                 this.state.addInput("Save instance: save -n [name]");
                 this.state.addInput("Clear inputs: clean");
