@@ -1,16 +1,17 @@
 <template>
-<div class="wrapper t-s-md p-a-md">
-        <div id="output" class="t-c-success" style="width: 45%;display: inline-block;overflow:hidden; height: 100%" >
+<div class="w-100 h-100 t-s-md p-a-sm e-fadein">
+        <div id="output" class="t-c-success" style="width: 49%;display: inline-block;overflow:hidden; height: 100%" >
             <div repeat.for="reply of state.replies">
                     ${reply}
             </div>
         </div>
-        <div id="input" class="t-c-success" style="width: 45%;display: inline-block;overflow:hidden; height: 100%; float:right">
+        <div id="input" class="t-c-success" style="width: 49%;display: inline-block;overflow:hidden; height: 100%; float:right">
                 <div repeat.for="input of state.inputs" innerhtml.bind="input">
                 </div>
             <div if.bind="state.canInput">
-                ${state.user.name}$ <input value.bind="cmdInput" keypress.trigger="submit($event)" type="text" value="" class="t-s-md t-c-success" focus.one-way="state.canInput" style="width: 50%;outline: 0;background: transparent; border: 0px"><!-- <span class="bg-c-inactive e-blink" style="width: 5px">&nbsp;</span> -->
+                ${state.user.name}$ <input value.bind="cmdInput" keypress.trigger="submit($event)" type="text" ref="textInput" class="t-s-md t-c-success" style="width: 50%;outline: 0;background: transparent; border: 0px"><!-- <span class="bg-c-inactive e-blink" style="width: 5px">&nbsp;</span> -->
             </div>
         </div>
 </div>
+
 </template>

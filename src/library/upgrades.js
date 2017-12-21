@@ -5,7 +5,7 @@ export class Upgrades{
     }
 
     addUpgrade(upgrade){
-        this.currentUpgrades[upgrade.name] = upgrade;
+        this.currentUpgrades.push(upgrade);
     }
     getTotalModifier(){
         let total = 0;
@@ -13,6 +13,13 @@ export class Upgrades{
             total += this.currentUpgrades[upgrade].modifier * this.currentUpgrades[upgrade].level;
         }
         return total;
+    }
+    findUpgrade(name){
+      for(let upgrade in this.currentUpgrades){
+          if(this.currentUpgrades[upgrade].name == name){
+            return this.currentUpgrades[upgrade];
+          }
+      }
     }
 
 }
