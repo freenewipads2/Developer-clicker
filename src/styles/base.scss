@@ -123,9 +123,18 @@ svg {
  .e-blink {
     animation: blink 1.2s infinite linear;
 }
+.e-glitch{
+  animation: glitch 0.1s 2 alternate;
+  opacity: 0;
+}
 @keyframes fadein{
     0% { opacity: 0;}
     100% { opacity: 1;}
+}
+
+@keyframes glitch{
+    0% { opacity: 1;}
+    100% { opacity: 0;}
 }
 
 @keyframes blink{
