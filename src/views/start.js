@@ -9,7 +9,7 @@ export class Start{
     var audio = new Audio('resources/start.wav');
     audio.play();
     setTimeout(x =>{
-      window.location =  "http://niviso.com/games/clicker/#/play";
+      window.location =  "/#/play";
       var audio = new Audio('resources/startup.wav');
       audio.play();
       var audio = new Audio('resources/bg.mp3');
